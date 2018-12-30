@@ -2,7 +2,7 @@
 <html>
   <style>
     body{
-      background-color: #59BFB3;
+      background-color: red;
     }
   </style>
   <head>
@@ -20,32 +20,20 @@
         }
       </style>
 
-      <div class="top">
-          <h1>Hello World!</h1>
-          Click the button for the type of hourglass you'd like
-          to use.
+      <!--Insert Button-->
+      <div class="button">
+        <span>
+          <button id="close" type="button">Close</button>
+        </span>
       </div>
 
-      <div class="buttons">
-          <span>
-            <button id="5" type="button" onclick="createChild();">5 Minutes
-            </button>
-          </span>
-
-          <span>
-              <button>20 Minutes</button>
-          </span>
-
-          <span>
-              <button>30 Minutes</button>
-          </span>
-
-        </div>
-      
-
       <script>
-        //function
-        
+        var myWindow;
+        //functions
+        function closeWin(){
+          myWindow.close();
+        }
+
 
         // You can also require other files to run in this process
         require('./renderer.js')

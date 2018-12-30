@@ -4,14 +4,12 @@ const {app, BrowserWindow} = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+let childWindow
 
 
 function createWindow () {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    'width': 400, 
-    'height': 400
-  })
+  // Create the main browser window.
+  mainWindow = new BrowserWindow({'width': 400, 'height': 400})
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
@@ -25,6 +23,21 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+  })
+}
+
+function createChild(){
+  //create the child window
+  childWindow = new BrowserWindow({'width': 400, 'height': 200, parent:mainWindow, modal:true})
+  
+  // and load the index.html of the app.
+  childWindow.loadFile('index_child.html')
+
+  childWindow.on('closed', function () {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    childWindow = null
   })
 }
 
